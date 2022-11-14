@@ -1,3 +1,6 @@
+*{
+  text-align: center;
+}
 .ml-100{
   margin-left: 100px;
 }
@@ -10,6 +13,13 @@
 /* 상단바 */
 .background-gray{
   background-color: #EEEEEE;
+}
+/* 상단메뉴이동글씨 */
+.nav_item{
+  margin-right: 25px;
+  color: gray;
+  padding-top: 5px;
+  cursor: pointer;
 }
 /* 메인 */
 .main-bg{

@@ -5,10 +5,11 @@ import shoe from './img/shoe.png';
 import { useState } from 'react';
 import data from './data.js'
 import Card from './Card'
+import { useNavigate } from 'react-router-dom';
 
 function ResponsiveAutoExample() {
     let [shoes] = useState(data)
-   
+   let navigate= useNavigate();
   return (
     <Container>
       <Row>
