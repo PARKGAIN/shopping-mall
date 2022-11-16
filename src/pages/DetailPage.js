@@ -1,6 +1,14 @@
 import React from 'react'
+import { useParams } from 'react-router-dom'
+import data from '../data';
 
 function DetailPage(props) {
+  let {id}=useParams();
+  // console.log(props.shoes.map(x=>x.id));
+  let 찾은상품 = props.shoes.find(function(x){
+    return x.id == id
+  });
+
   return (
     <div className="container">
      <div className="row">
@@ -8,9 +16,9 @@ function DetailPage(props) {
       <img src="https://codingapple1.github.io/shop/shoes1.jpg" width="100%" />
     </div>
     <div className="col-md-6">
-      <h4 className="pt-5">{props.shoes[0].title}</h4>
-      <p>{props.shoes[0].content}</p>
-      <p>{props.shoes[0].price}</p>
+      <h4 className="pt-5">{찾은상품.title}</h4>
+      <p>{찾은상품.content}</p>
+      <p>{찾은상품.price}</p>
       <button className="btn btn-danger">주문하기</button> 
     </div>
   </div>

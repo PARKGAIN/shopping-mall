@@ -22,8 +22,6 @@ function App() {
       </>}>
       </Route>
       <Route path="/detail/:id" element={<DetailPage shoes={shoes}/>}/>
-      <Route path="/detail/1" element={<DetailPage shoes={shoes}/>}/>
-      <Route path="/detail/2" element={<DetailPage shoes={shoes}/>}/>
       <Route path="/about" element={<About/>}>
         <Route path="member" element={<div>멤버임</div>}/>
         <Route path="location" element={<About/>}/>
