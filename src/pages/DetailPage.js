@@ -16,16 +16,17 @@ function DetailPage(props) {
   let 찾은상품 = props.shoes.find(function (x) {
     return x.id == id;
   });
+  const [visible, setVisible] = useState(true);
   useEffect(() => {
     setTimeout(() => {
-      document.removeEventListener("click", <Discount />);
+      setVisible(!visible);
     }, 2000);
   });
 
   let [count, setCount] = useState(0);
   return (
     <div className="container">
-      <Discount />
+      {visible && <Discount />}
       {count}
       <YellowBtn
         bg="blue"
