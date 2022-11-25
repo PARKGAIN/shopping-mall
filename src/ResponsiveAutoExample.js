@@ -9,7 +9,7 @@ import { useNavigate } from 'react-router-dom';
 
 function ResponsiveAutoExample() {
     let [shoes] = useState(data)
-   let navigate= useNavigate();
+
   return (
     <Container>
       <Row>
