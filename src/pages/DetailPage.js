@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import data from "../data";
 import styled from "styled-components";
-import NumberInput from "../components/NumberInput";
 
 let YellowBtn = styled.button`
   background: ${(props) => props.bg};
