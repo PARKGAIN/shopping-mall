@@ -4,17 +4,19 @@ import BreadcrumbExample from "./Breadcrumb";
 import { Routes, Route, Link, useNavigate, Outlet } from "react-router-dom";
 import DetailPage from "./pages/DetailPage";
 import Event from "./pages/Event";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import data from "./data";
 import axios from "axios";
 import Col from "react-bootstrap/Col";
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Card from "./Card";
+import { First } from "react-bootstrap/esm/PageItem";
+import Loading from "./components/Loading";
 function App() {
   let [shoes, setShoes] = useState(data);
-  let [click, setClick] = useState();
-
+  let [click, setClick] = useState(0);
+  let [visibility, setVisibility] = useState(false);
   return (
     <>
       <BreadcrumbExample />
@@ -57,17 +59,35 @@ function App() {
       </Routes>
       <button
         onClick={() => {
-          axios
-            .get("https://codingapple1.github.io/shop/data2.json")
-            .then((result) => {
-              console.log(result.data);
-              let shoescopy = [...shoes];
-              let fetchedshoes = shoescopy.concat(result.data);
-              setShoes(fetchedshoes);
-            })
-            .catch(() => {
-              console.log("error");
-            });
+          <Loading />;
+          setClick((x) => x + 1);
+          if (click == 0) {
+            axios
+              .get("https://codingapple1.github.io/shop/data2.json")
+              .then((result) => {
+                console.log(result.data);
+                let shoescopy = [...shoes];
+                let fetchedshoes = shoescopy.concat(result.data);
+                setShoes(fetchedshoes);
+                {
+                  visibility && <Loading />;
+                }
+              })
+              .catch(console.log("error"));
+          }
+          if (click == 1) {
+            axios
+              .get("https://codingapple1.github.io/shop/data3.json")
+              .then((result) => {
+                let copy = [...shoes];
+                let fetched = copy.concat(result.data);
+                setShoes(fetched);
+                {
+                  visibility && <Loading />;
+                }
+              })
+              .catch(console.log("error"));
+          }
         }}
       >
         버튼
