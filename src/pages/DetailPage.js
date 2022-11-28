@@ -2,7 +2,8 @@ import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import data from "../data";
 import styled from "styled-components";
-
+import { Tab } from "bootstrap";
+import TabUI from "../components/TabUI";
 let YellowBtn = styled.button`
   background: ${(props) => props.bg};
   color: ${(props) => (props.bg == "blue" ? "white" : "black")};
@@ -13,6 +14,7 @@ let newBtn = styled.button(YellowBtn);
 function DetailPage(props) {
   let { id } = useParams();
   let [num, setNum] = useState("");
+
   let 찾은상품 = props.shoes.find(function (x) {
     return x.id == id;
   });
@@ -66,6 +68,7 @@ function DetailPage(props) {
           <button className="btn btn-danger">주문하기</button>
         </div>
       </div>
+      <TabUI />
     </div>
   );
 }

@@ -39,6 +39,41 @@ function App() {
                     </Col>
                   </Row>
                 </Container>
+                <button
+                  onClick={() => {
+                    <Loading />;
+                    setClick((x) => x + 1);
+                    if (click == 0) {
+                      axios
+                        .get("https://codingapple1.github.io/shop/data2.json")
+                        .then((result) => {
+                          console.log(result.data);
+                          let shoescopy = [...shoes];
+                          let fetchedshoes = shoescopy.concat(result.data);
+                          setShoes(fetchedshoes);
+                          {
+                            visibility && <Loading />;
+                          }
+                        })
+                        .catch(console.log("error"));
+                    }
+                    if (click == 1) {
+                      axios
+                        .get("https://codingapple1.github.io/shop/data3.json")
+                        .then((result) => {
+                          let copy = [...shoes];
+                          let fetched = copy.concat(result.data);
+                          setShoes(fetched);
+                          {
+                            visibility && <Loading />;
+                          }
+                        })
+                        .catch(console.log("error"));
+                    }
+                  }}
+                >
+                  버튼
+                </button>
               </div>
             </>
           }
@@ -57,41 +92,6 @@ function App() {
           <Route path="two" element={<div>생일기념 쿠폰받기</div>} />
         </Route>
       </Routes>
-      <button
-        onClick={() => {
-          <Loading />;
-          setClick((x) => x + 1);
-          if (click == 0) {
-            axios
-              .get("https://codingapple1.github.io/shop/data2.json")
-              .then((result) => {
-                console.log(result.data);
-                let shoescopy = [...shoes];
-                let fetchedshoes = shoescopy.concat(result.data);
-                setShoes(fetchedshoes);
-                {
-                  visibility && <Loading />;
-                }
-              })
-              .catch(console.log("error"));
-          }
-          if (click == 1) {
-            axios
-              .get("https://codingapple1.github.io/shop/data3.json")
-              .then((result) => {
-                let copy = [...shoes];
-                let fetched = copy.concat(result.data);
-                setShoes(fetched);
-                {
-                  visibility && <Loading />;
-                }
-              })
-              .catch(console.log("error"));
-          }
-        }}
-      >
-        버튼
-      </button>
     </>
   );
 }
