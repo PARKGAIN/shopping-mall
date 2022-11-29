@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import { useState } from "react";
 import Nav from "react-bootstrap/Nav";
 
-function TabUI() {
+function TabUI({ shoes }) {
   let [tabClick, setTabClick] = useState(0);
 
   return (
@@ -36,11 +36,11 @@ function TabUI() {
           </Nav.Link>
         </Nav.Item>
       </Nav>
-      <TabContent tabClick={tabClick} />
+      <TabContent tabClick={tabClick} shoes={shoes} />
     </>
   );
 }
-function TabContent({ tabClick }) {
+function TabContent({ tabClick, shoes }) {
   let [fade, setFade] = useState("");
   useEffect(() => {
     let a = setTimeout(() => {
@@ -57,7 +57,7 @@ function TabContent({ tabClick }) {
     <div className={`start ${fade}`}>
       {
         [
-          <div>Tab 1 내용입니다.</div>,
+          <div>{shoes[0].title}</div>,
           <div>Tab 2 내용입니다.</div>,
           <div>Tab 3 내용입니다.</div>,
         ][tabClick]

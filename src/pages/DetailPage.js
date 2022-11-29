@@ -24,7 +24,7 @@ function DetailPage(props) {
   useEffect(() => {
     let a = setTimeout(() => {
       setVisible(false);
-    }, 2000);
+    }, 9000);
 
     return () => {
       clearTimeout(a);
@@ -68,15 +68,26 @@ function DetailPage(props) {
           <button className="btn btn-danger">주문하기</button>
         </div>
       </div>
-      <TabUI />
+      <TabUI shoes={props.shoes} />
     </div>
   );
 }
 
 function Discount() {
+  let [fade, setFade] = useState("");
+  useEffect(() => {
+    let a = setTimeout(() => {
+      setFade("end");
+    }, 100);
+    return () => {
+      clearTimeout(a);
+    };
+  }, []);
   return (
     <>
-      <div className="alert alert-warning">2초 이내 구매시 할인</div>
+      <div className={"alert alert-warning start" + fade}>
+        2초 이내 구매시 할인
+      </div>
     </>
   );
 }

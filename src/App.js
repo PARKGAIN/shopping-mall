@@ -11,12 +11,15 @@ import Col from "react-bootstrap/Col";
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Card from "./Card";
-import { First } from "react-bootstrap/esm/PageItem";
 import Loading from "./components/Loading";
+import { createContext } from "react";
+
+let Context1 = createContext();
 function App() {
   let [shoes, setShoes] = useState(data);
   let [click, setClick] = useState(0);
   let [visibility, setVisibility] = useState(false);
+  let [재고] = useState([10, 11, 12]);
   return (
     <>
       <BreadcrumbExample />
