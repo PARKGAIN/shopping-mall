@@ -15,8 +15,8 @@ function Cart() {
           <tr>
             <td>1</td>
             <td>안녕</td>
-            <td>Otto</td>
-            <td>@mdo</td>
+            <td></td>
+            <td></td>
           </tr>
           <tr>
             <td>2</td>
