@@ -1,9 +1,10 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import data from "../data";
 import styled from "styled-components";
 import { Tab } from "bootstrap";
 import TabUI from "../components/TabUI";
+import { Context1 } from "../App";
 let YellowBtn = styled.button`
   background: ${(props) => props.bg};
   color: ${(props) => (props.bg == "blue" ? "white" : "black")};
@@ -12,6 +13,7 @@ let YellowBtn = styled.button`
 let newBtn = styled.button(YellowBtn);
 
 function DetailPage(props) {
+  let { 재고 } = useContext(Context1);
   let { id } = useParams();
   let [num, setNum] = useState("");
 

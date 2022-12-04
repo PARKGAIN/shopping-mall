@@ -13,8 +13,9 @@ import Row from "react-bootstrap/Row";
 import Card from "./Card";
 import Loading from "./components/Loading";
 import { createContext } from "react";
+import Cart from "./pages/Cart";
 
-let Context1 = createContext();
+export let Context1 = createContext();
 function App() {
   let [shoes, setShoes] = useState(data);
   let [click, setClick] = useState(0);
@@ -81,7 +82,15 @@ function App() {
             </>
           }
         ></Route>
-        <Route path="/detail/:id" element={<DetailPage shoes={shoes} />} />
+        <Route
+          path="/detail/:id"
+          element={
+            <Context1.Provider value={{ 재고 }}>
+              <DetailPage shoes={shoes} />
+            </Context1.Provider>
+          }
+        />
+
         <Route path="/about" element={<About />}>
           <Route path="member" element={<div>멤버임</div>} />
           <Route path="location" element={<About />} />
@@ -94,6 +103,7 @@ function App() {
           <Route path="one" element={<div>첫주문시 양배추즙 서비스</div>} />
           <Route path="two" element={<div>생일기념 쿠폰받기</div>} />
         </Route>
+        <Route path="/cart" element={<Cart />}></Route>
       </Routes>
     </>
   );
