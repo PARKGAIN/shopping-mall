@@ -1,5 +1,9 @@
 import Table from "react-bootstrap/Table";
+import { useSelector } from "react-redux";
 function Cart() {
+  let a = useSelector((state) => {
+    return state;
+  });
   return (
     <div>
       <Table striped bordered hover>
@@ -14,20 +18,20 @@ function Cart() {
         <tbody>
           <tr>
             <td>1</td>
-            <td>안녕</td>
-            <td></td>
+            <td>{a.item[0].name}</td>
+            <td>{a.item[0].count}</td>
             <td></td>
           </tr>
           <tr>
             <td>2</td>
-            <td>Jacob</td>
-            <td>Thornton</td>
-            <td>@fat</td>
+            <td>{a.item[1].name}</td>
+            <td>{a.item[1].count}</td>
+            <td></td>
           </tr>
           <tr>
             <td>3</td>
-            <td colSpan={2}>Larry the Bird</td>
-            <td>@twitter</td>
+            <td></td>
+            <td></td>
           </tr>
         </tbody>
       </Table>
