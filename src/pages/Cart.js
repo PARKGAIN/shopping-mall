@@ -1,11 +1,35 @@
+import { memo, useMemo, useState } from "react";
 import Table from "react-bootstrap/Table";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { changeAge } from "../store";
+let Child = memo(function () {
+  console.log("재렌더링");
+  return <div>자식임</div>;
+});
+
+function 함수() {
+  return "반복문10억번돌린결과";
+}
 function Cart() {
-  let a = useSelector((state) => {
+  let state = useSelector((state) => {
     return state;
   });
+  let dispatch = useDispatch();
+  let [count, setCount] = useState(0);
+  let result = useMemo(() => {
+    return 함수();
+  }, []);
   return (
     <div>
+      <Child />
+      <button
+        onClick={() => {
+          setCount(count + 1);
+        }}
+      >
+        +
+      </button>
+      {state.user}의 장바구니
       <Table striped bordered hover>
         <thead>
           <tr>
@@ -16,23 +40,22 @@ function Cart() {
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <td>1</td>
-            <td>{a.item[0].name}</td>
-            <td>{a.item[0].count}</td>
-            <td></td>
-          </tr>
-          <tr>
-            <td>2</td>
-            <td>{a.item[1].name}</td>
-            <td>{a.item[1].count}</td>
-            <td></td>
-          </tr>
-          <tr>
-            <td>3</td>
-            <td></td>
-            <td></td>
-          </tr>
+          {state.cart.map((a, i) => (
+            <tr key={i}>
+              <td>{state.cart[i].id}</td>
+              <td>{state.cart[i].name}</td>
+              <td>{state.cart[i].count}</td>
+              <td>
+                <button
+                  onClick={() => {
+                    dispatch(changeAge(100));
+                  }}
+                >
+                  +
+                </button>
+              </td>
+            </tr>
+          ))}
         </tbody>
       </Table>
     </div>
